@@ -21,14 +21,34 @@ request.open(method, url, shouldBeAsync);
 
 request.setRequestHeader("Accept", "application/json;text/xml");
 request.setRequestHeader("Content-Type", "audio/mpeg; codec=audio/mpga; samplerate=44100");
-request.setRequestHeader("Ocp-Apim-Subscription-Key", "");
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    var allText;
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                allText = rawFile.responseText;
+                // alert(allText);
+            }
+        }
+    }
+    rawFile.send(null);
+    return allText;
+}
+console.log(readTextFile("keys"));
+request.setRequestHeader("Ocp-Apim-Subscription-Key", readTextFile("keys"));
 // todo: put api key here, retrieving it from a file. DO NOT put it in plaintext. probably for hackathon purposes just stick it into a gitignored text file. 
 request.setRequestHeader("Host", "speech.platform.bing.com");
 request.setRequestHeader("Transfer-Encoding", "chunked");
 request.setRequestHeader("Expect", "100-continue");
 
 // Actually sends the request to the server.
-request.send(postData);
+// request.send(postData);
 
-console.log(status);
-console.log(data);
+// console.log(status);
+// console.log(data);
