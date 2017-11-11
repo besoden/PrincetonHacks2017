@@ -20,7 +20,7 @@ request.onload = function () {
 request.open(method, url, shouldBeAsync);
 
 request.setRequestHeader("Accept", "application/json;text/xml");
-request.setRequestHeader("Content-Type", "audio/mp3; codec=audio/pcm; samplerate=16000"); // todo: change this since output is mp3.
+request.setRequestHeader("Content-Type", "audio/mpeg; codec=audio/mpga; samplerate=44100");
 request.setRequestHeader("Ocp-Apim-Subscription-Key", "");
 // todo: put api key here, retrieving it from a file. DO NOT put it in plaintext. probably for hackathon purposes just stick it into a gitignored text file. 
 request.setRequestHeader("Host", "speech.platform.bing.com");
