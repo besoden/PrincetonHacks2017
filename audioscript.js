@@ -46,7 +46,6 @@ function getKey(stringArray){
     return stringArray[1].substring(7);
 }
 request.setRequestHeader("Ocp-Apim-Subscription-Key", getKey(readTextFile("keys")));
-// todo: put api key here, retrieving it from a file. DO NOT put it in plaintext. probably for hackathon purposes just stick it into a gitignored text file. 
 request.setRequestHeader("Host", "speech.platform.bing.com");
 request.setRequestHeader("Transfer-Encoding", "chunked");
 request.setRequestHeader("Expect", "100-continue");
