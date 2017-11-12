@@ -1,4 +1,6 @@
-var filename = './output.wav';
+var prefix = './output';
+var extension = '.wav';
+var num_clips = 6;
 
 var url = "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US&format=detailed";
 var method = "POST";
@@ -51,20 +53,22 @@ request.setRequestHeader("Ocp-Apim-Subscription-Key", getKey(readTextFile("keys"
 // request.setRequestHeader("Host", "speech.platform.bing.com");
 // request.setRequestHeader("Transfer-Encoding", "chunked");
 // request.setRequestHeader("Expect", "100-continue");
+for (let clip = 0; clip < num_clips; clip++) {
+    var filename = prefix + clip + extension;
+    console.log('current clip: ' + filename);
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", filename);
+    xhr.responseType = "blob";
+    var response = null;
 
-var xhr = new XMLHttpRequest();
-xhr.open("GET", filename);
-xhr.responseType = "blob";
-var response = null;
+    xhr.onload = function() 
+    {
+        // analyze_data(xhr.response);
+        console.log(xhr.response);
+        request.send(xhr.response);
 
+    }
 
-xhr.onload = function() 
-{
-    // analyze_data(xhr.response);
-    console.log(xhr.response);
-    request.send(xhr.response);
-
+    xhr.send();
+    // Actually sends the request to the server.
 }
-
-xhr.send();
-// Actually sends the request to the server.
