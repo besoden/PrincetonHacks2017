@@ -53,7 +53,7 @@ request.setRequestHeader("Ocp-Apim-Subscription-Key", getKey(readTextFile("keys"
 // request.setRequestHeader("Host", "speech.platform.bing.com");
 // request.setRequestHeader("Transfer-Encoding", "chunked");
 // request.setRequestHeader("Expect", "100-continue");
-for (let clip = 0; clip < num_clips; clip++) {
+for (let clip = 1; clip <= num_clips; clip++) {
     var filename = prefix + clip + extension;
     console.log('current clip: ' + filename);
     var xhr = new XMLHttpRequest();
