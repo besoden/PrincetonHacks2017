@@ -8,23 +8,27 @@ var postData = "Some data";
 
 // You REALLY want shouldBeAsync = true.
 // Otherwise, it'll block ALL execution waiting for server response.
-var shouldBeAsync = true;
+var shouldBeAsync = false;// temporary hack to get around async annoying. todo: fix
 
-var request = new XMLHttpRequest();
+var request = [];
+for (let i = 0; i < num_clips; i++) {
+    request[i] = new XMLHttpRequest();
+
+    request[i].open(method, url, shouldBeAsync);
+    request[i].setRequestHeader("Accept", "application/json;text/xml");
+    request[i].setRequestHeader("Content-Type", "audio/wav; codec=audio/pcm; samplerate=16000");
+    request[i].setRequestHeader("Ocp-Apim-Subscription-Key", getKey(readTextFile("keys")));
+    request[i].onload = function () {
+       // You can get all kinds of information about the HTTP response.
+       status = request[i].status; // HTTP response status, e.g., 200 for "200 OK"
+       data = request[i].responseText; // Returned data, e.g., an HTML document.
+        // console.log(data);
+        console.log((JSON.parse(data))["NBest"][0]["Display"]);
+    };
+}
 var status;
 var data;
-request.onload = function () {
-   // You can get all kinds of information about the HTTP response.
-   status = request.status; // HTTP response status, e.g., 200 for "200 OK"
-   data = request.responseText; // Returned data, e.g., an HTML document.
-    // console.log(status);
-    console.log(data.NBest[0].Display);
-};
 
-request.open(method, url, shouldBeAsync);
-
-request.setRequestHeader("Accept", "application/json;text/xml");
-request.setRequestHeader("Content-Type", "audio/wav; codec=audio/pcm; samplerate=16000");
 // returns a list of line-by-line content in the file
 function readTextFile(file)
 {
@@ -49,26 +53,30 @@ function readTextFile(file)
 function getKey(stringArray){
     return stringArray[1].substring(7);
 }
-request.setRequestHeader("Ocp-Apim-Subscription-Key", getKey(readTextFile("keys")));
+
 // request.setRequestHeader("Host", "speech.platform.bing.com");
 // request.setRequestHeader("Transfer-Encoding", "chunked");
 // request.setRequestHeader("Expect", "100-continue");
-for (let clip = 1; clip <= num_clips; clip++) {
-    var filename = prefix + clip + extension;
+var xhr = [];
+
+for (let i = 0; i < num_clips; i++) {
+    xhr.push(0);
+}
+for (let clip = 0; clip < num_clips; clip++) {
+    var filename = prefix + (clip + 1) + extension;
     console.log('current clip: ' + filename);
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", filename);
-    xhr.responseType = "blob";
+    xhr[clip] = new XMLHttpRequest();
+    xhr[clip].open("GET", filename);
+    xhr[clip].responseType = "blob";
     var response = null;
 
-    xhr.onload = function() 
+    xhr[clip].onload = function() 
     {
         // analyze_data(xhr.response);
-        console.log(xhr.response);
-        // request.send(xhr.response);
-
+        // console.log(xhr[clip].response);
+        request[clip].send(xhr[clip].response);
     }
 
-    xhr.send();
+    xhr[clip].send();
     // Actually sends the request to the server.
 }
