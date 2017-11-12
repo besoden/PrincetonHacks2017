@@ -29,8 +29,12 @@
 }
 #pics {
     text-align: center;
+    margin-bottom:50px;
 }
 .logo {
-    width: 100px;
-    height: 100px;
+    top:-100px;
+    left: 0%;
+    position: relative;
+    width: 200px;
+    height: 200px;
 }
