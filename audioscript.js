@@ -17,8 +17,8 @@ request.onload = function () {
    // You can get all kinds of information about the HTTP response.
    status = request.status; // HTTP response status, e.g., 200 for "200 OK"
    data = request.responseText; // Returned data, e.g., an HTML document.
-    console.log(status);
-    console.log(data);
+    // console.log(status);
+    console.log(data.NBest[0].Display);
 };
 
 request.open(method, url, shouldBeAsync);
@@ -64,7 +64,7 @@ for (let clip = 0; clip < num_clips; clip++) {
     xhr.onload = function() 
     {
         // analyze_data(xhr.response);
-        console.log(xhr.response);
+        // console.log(xhr.response);
         request.send(xhr.response);
 
     }
