@@ -1,3 +1,11 @@
+var cache = ["No its course there's different versions of this depending on who you are depending on what your schedule is but in general everyone has a constraint of time in there for you have a constraint of what you can do in a given day.",
+"Perhaps the one thing that binds all of us together but there are a few other things of course but time is certainly something that we share and the lack of time more importantly is something that always share.",
+"Helping you spend your time effectively helping you focus for example when you're listening to podcast episode helping you focus on the right things and time is such an important topic is perhaps the one thing that binds.",
+"In becoming a better developer sometimes means understanding more about how you spend your time that's what today's episode is about in fact reiliana midlevel what developer tears about helping you spend your time.",
+"The most important time of my day and why I think that can be important for you to your listening to developer T my name is Jonathan control my goal is to help you become a better.",
+"Or it may be that you very much enjoy the sunset in so seeing the sunset is particularly valuable to you there's not really a wrong answer here but I wanna share with you."];
+// cached values.
+
 var prefix = './output';
 var extension = '.wav';
 var num_clips = 6;
@@ -23,7 +31,13 @@ for (let i = 0; i < num_clips; i++) {
        status = request[i].status; // HTTP response status, e.g., 200 for "200 OK"
        data = request[i].responseText; // Returned data, e.g., an HTML document.
         // console.log(data);
-        console.log((JSON.parse(data))["NBest"][0]["Display"]);
+        if (status == 200) {
+            cache[i] = (JSON.parse(data))["NBest"][0]["Display"]; // update if we got a 200 code. technically not necessary but useful to show.
+            console.log('updated entry ' + i);
+        }
+        if (i == num_clips - 1) {
+            printSubtitles();
+        }
     };
 }
 var status;
@@ -79,4 +93,9 @@ for (let clip = 0; clip < num_clips; clip++) {
 
     xhr[clip].send();
     // Actually sends the request to the server.
+}
+
+// every 14 seconds, update the subtitles.
+function printSubtitles() {
+    document.getElementById("subtitles").innerHTML = cache[0];
 }
