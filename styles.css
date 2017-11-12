@@ -1,49 +1,62 @@
 #banner {
-    height: 30%;
+    margin-left: 0px;
+    padding-left: 0px;
+    height: 100px;
     width: 100%;
     position: fixed;
     top: 0;
     background: #cfbcd1;
+    border-bottom-style: solid;
+    border-bottom-color: black;
 }
 
 
 body{
+    background-color: #c5bcd1;
 padding-top: 40px;
-background-color:#c5bcd1;
 }
-
-#icon {
-    height: 100%;
-    float: left;
-}
-
 .nav-up {
     top: -40px;
 }
 
 #hi{
     position: relative;
-    top:20%;
-    text-align: left;
+    top:-85px;
+
+    left: 1%;
+
+
+}
+img.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#text{
+
+    position: relative;
+    top:33px;
+    left: 10px;
+}
+
+#img{
+    top:0px;
+    left: 0;
+    position: relative;
 }
 
 #content{
 
-    height: 60%;
-    bottom: 0;
-    position:fixed;
+    height: 2000px;
+
 }
 
 #audiocontent{
 
     text-align: center;
-    position: fixed;
-    left: 40%;
+    position: relative;
+    left: 30%;
     top: 400px;
     z-index: 1;
-}
-
-#subtitles {
-    width:100%;
-
 }
