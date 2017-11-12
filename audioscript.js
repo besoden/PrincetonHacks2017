@@ -2,9 +2,10 @@ var cache = ["No its course there's different versions of this depending on who 
 "Perhaps the one thing that binds all of us together but there are a few other things of course but time is certainly something that we share and the lack of time more importantly is something that always share.",
 "Helping you spend your time effectively helping you focus for example when you're listening to podcast episode helping you focus on the right things and time is such an important topic is perhaps the one thing that binds.",
 "In becoming a better developer sometimes means understanding more about how you spend your time that's what today's episode is about in fact reiliana midlevel what developer tears about helping you spend your time.",
-"The most important time of my day and why I think that can be important for you to your listening to developer T my name is Jonathan control my goal is to help you become a better.",
+"The most important time of my day and why I think that can be important for you to your listening to developer T my name is Jonathan control my goal is to help you become a better developer.",
 "Or it may be that you very much enjoy the sunset in so seeing the sunset is particularly valuable to you there's not really a wrong answer here but I wanna share with you."].reverse();
 // cached values.
+
 
 var prefix = './output';
 var extension = '.wav';
@@ -35,9 +36,9 @@ for (let i = 0; i < num_clips; i++) {
             cache[i] = (JSON.parse(data))["NBest"][0]["Display"]; // update if we got a 200 code. technically not necessary but useful to show.
             console.log('updated entry ' + i);
         }
-        if (i == num_clips - 1) {
-            printSubtitles();
-        }
+        // if (i == num_clips - 1) {
+        //     printSubtitles();
+        // }
     };
 }
 var status;
@@ -87,22 +88,55 @@ for (let clip = 0; clip < num_clips; clip++) {
     xhr[clip].onload = function() 
     {
         // request[clip].send(xhr[clip].response);
-        printSubtitles();
+        // printSubtitles();
     }
 
     xhr[clip].send();
     // Actually sends the request to the server.
 }
 
+var interval = 1000;
+var ticks = 0;
+var pause = false;
+var i = 1;
+var ac = null;
+var printedFirst = false;
+
+var _f = function() {
+    if (pause) {
+        return;
+    }
+    console.log(ticks);
+    ticks++;
+    if(ticks < 14) {
+        ac = setTimeout(_f, interval);
+    }
+    else {
+        // done 14 ticks, reset
+        printSubtitles(i);
+        i++;
+        ticks = 0;
+        ac = setTimeout(_f, interval);
+    }
+}
+
 function onPlay() {
-    setTimeout(myFunction, 14000);
+    if (!printedFirst) {
+        printedFirst = true;
+        printSubtitles(0);
+    }
+    pause = false;
+    if (ac != null) {
+        clearTimeout(ac);
+    }
+    ac = setTimeout(_f, interval);
 }
 
 function onPause() {
-
+    pause = true;
 }
 
 // every 14 seconds, update the subtitles.
-function printSubtitles(interval) {
-    document.getElementById("subtitles").innerHTML = cache[interval];
+function printSubtitles(i) {
+    document.getElementById("subtitles").innerHTML = cache[i];
 }
