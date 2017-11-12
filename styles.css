@@ -1,0 +1,40 @@
+#banner {
+
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background: #DBDBDB;
+
+}
+
+
+body{
+padding-top: 40px;
+}
+.nav-up {
+    top: -40px;
+}
+
+#hi{
+    position: relative;
+    top:20%;
+    text-align: center;
+
+
+}
+
+#content{
+
+    height: 2000px;
+
+}
+
+#audiocontent{
+
+    text-align: center;
+    position: relative;
+    left: 40%;
+    top: 400px;
+    z-index: 1;
+}

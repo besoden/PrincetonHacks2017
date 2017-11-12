@@ -1,11 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hack Princeton 2017</title>
-  <h1>Iana, Leon, Nive, Seema</h1>
+    <title>Hack Princeton 2017</title>
+
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+
+
+        function test(){
+            console.log('here i am');
+            var ScrollTop = parseInt($(window).scrollTop());
+
+            if(ScrollTop>100) {
+                document.getElementById("banner").style.top="-100px";
+                document.getElementById("banner").style.transition= "0.2s ease-in-out";
+            }
+            else
+            {
+                document.getElementById("banner").style.top = "0px";
+
+
+
+            }
+
+        }
+
+window.addEventListener('scroll', test);
+
+    </script>
+
 </head>
-<body bgcolor="#FFD9AA">
-<h1>hello world!</h1>
-<script type="text/javascript" src="audioscript.js"></script>
+<body >
+
+<div id="banner">
+
+    <h1 id="hi">Welcome to Speach to Text! </h1>
+
+
+</div>
+<div id="content">
+    <span id="audiocontent">
+    <audio controls >
+        <source src="audio\most.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    </span>
+
+</div>
+
+
+
+
+
+
 </body>
 </html>
