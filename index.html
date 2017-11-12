@@ -4,7 +4,9 @@
     <title>Hack Princeton 2017</title>
 
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
 
 
@@ -28,21 +30,32 @@
     </script>
     <script src="audioscript.js"></script>
 </head>
-<body bgcolor="#FFD9AA">
-  <div id="banner">
+
+
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <h1 id="title">Read It Out</h1>
+      <img src="imgs/logo.png" alt="icon" id="icon" class='img-responsive'>
+    </div>
+  </div>
+</nav>
+  <!-- <div id="banner">
     <img src="imgs/logo.png" alt="icon" id="icon">
     <h1 id="hi">Podcast Transcriber</h1>
-  </div>
+  </div> -->
 <div id="content">
-  <span id="audiocontent">
-    <audio controls >
-        <source src="audio\most.mp3" type="audio/mpeg">
+  <div id="audiocontent">
+    <audio controls>
+        <source src="longoutput.wav" type="audio/wav">
         Your browser does not support the audio element.
     </audio>
     <div id="subtitles">content</div>
-  </span>
+  </div>
 
 </div>
+
 
 </body>
 </html>

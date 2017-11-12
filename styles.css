@@ -1,49 +1,13 @@
-#banner {
-    height: 30%;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    background: #cfbcd1;
+    /*background: #cfbcd1;
+
+
+    background-color:#c5bcd1;*/
+#title {
+    float:left;
 }
-
-
-body{
-padding-top: 40px;
-background-color:#c5bcd1;
-}
-
 #icon {
-    height: 100%;
-    float: left;
+    max-height: 100%
 }
-
-.nav-up {
-    top: -40px;
-}
-
-#hi{
-    position: relative;
-    top:20%;
-    text-align: left;
-}
-
-#content{
-
-    height: 60%;
-    bottom: 0;
-    position:fixed;
-}
-
-#audiocontent{
-
-    text-align: center;
-    position: fixed;
-    left: 40%;
-    top: 400px;
-    z-index: 1;
-}
-
-#subtitles {
-    width:100%;
-
+.navbar-header {
+    height: 100px;
 }
