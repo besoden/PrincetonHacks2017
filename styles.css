@@ -1,11 +1,9 @@
 #banner {
-
-    height: 100px;
+    height: 30%;
     width: 100%;
     position: fixed;
     top: 0;
     background: #DBDBDB;
-
 }
 
 
@@ -20,21 +18,25 @@ padding-top: 40px;
     position: relative;
     top:20%;
     text-align: center;
-
-
 }
 
 #content{
 
-    height: 2000px;
-
+    height: 60%;
+    bottom: 0;
+    position:fixed;
 }
 
 #audiocontent{
 
     text-align: center;
-    position: relative;
+    position: fixed;
     left: 40%;
     top: 400px;
     z-index: 1;
+}
+
+#subtitles {
+    width:100%;
+
 }

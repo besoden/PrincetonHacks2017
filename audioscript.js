@@ -64,8 +64,8 @@ for (let clip = 1; clip <= num_clips; clip++) {
     xhr.onload = function() 
     {
         // analyze_data(xhr.response);
-        // console.log(xhr.response);
-        request.send(xhr.response);
+        console.log(xhr.response);
+        // request.send(xhr.response);
 
     }
 
