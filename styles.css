@@ -10,4 +10,10 @@
 }
 .navbar-header {
     height: 100px;
+    display: inline;
+}
+#audiocontent {
+    text-align: center;
+    position: relative;
+    /*left: 30%*/
 }
