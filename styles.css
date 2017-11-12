@@ -3,13 +3,20 @@
     width: 100%;
     position: fixed;
     top: 0;
-    background: #DBDBDB;
+    background: #cfbcd1;
 }
 
 
 body{
 padding-top: 40px;
+background-color:#c5bcd1;
 }
+
+#icon {
+    height: 100%;
+    float: left;
+}
+
 .nav-up {
     top: -40px;
 }
@@ -17,7 +24,7 @@ padding-top: 40px;
 #hi{
     position: relative;
     top:20%;
-    text-align: center;
+    text-align: left;
 }
 
 #content{
