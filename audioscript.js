@@ -94,7 +94,15 @@ for (let clip = 0; clip < num_clips; clip++) {
     // Actually sends the request to the server.
 }
 
+function onPlay() {
+    setTimeout(myFunction, 14000);
+}
+
+function onPause() {
+
+}
+
 // every 14 seconds, update the subtitles.
-function printSubtitles() {
-    document.getElementById("subtitles").innerHTML = cache[0];
+function printSubtitles(interval) {
+    document.getElementById("subtitles").innerHTML = cache[interval];
 }
