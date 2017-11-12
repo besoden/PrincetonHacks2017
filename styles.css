@@ -18,3 +18,11 @@
     left: 75%;
     top:-75px;
 }
+#content {
+    margin:10%;
+}
+#subtitles {
+    text-align: center;
+    font-size: 4em;
+    font-weight:700;
+}
