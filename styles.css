@@ -20,9 +20,17 @@
 }
 #content {
     margin:10%;
+    height: 350px;
 }
 #subtitles {
     text-align: center;
     font-size: 4em;
     font-weight:700;
+}
+#pics {
+    text-align: center;
+}
+.logo {
+    width: 100px;
+    height: 100px;
 }
